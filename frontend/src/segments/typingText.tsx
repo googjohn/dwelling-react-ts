@@ -9,7 +9,7 @@ const SERVICES = [
 ]
 
 export default function ServicesInfo() {
-  const { text, status } = useTypingText(SERVICES, 50)
+  const { text, status } = useTypingText(SERVICES, 50, 1500)
   return (
     <div className="typing-text w-full min-h-16 flex gap-2.5 items-center justify-center place-self-center">
       <span className="text-white/60 whitespace-nowrap">{"We offer:"}</span>
