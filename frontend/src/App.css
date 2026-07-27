@@ -1,0 +1,115 @@
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--color-yellow-300);
+  border-bottom: 1px solid var(--color-yellow-300);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+  border-color: transparent;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--color-red-500);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--color-red-500);
+  }
+}
+
+.hero-container {
+  background-image: 
+    linear-gradient(rgba(0,0,0, 0.35), rgba(0,0,0, 0.35)),
+    url(./assets/images/backgrounds/bg-hero-main.webp);
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+  height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  @media (width <= 720px) {
+    gap: 10px;
+    /* line-height: 1rem; */
+  }
+}
+.salutation {
+  h1 {
+    display: flex;
+    place-content: center;
+    gap: 20px;
+    font-size: var(--txt-salutation);
+    
+  }
+  .typing-text {
+    font-size: var(--txt-heading-2);
+
+    p > span {
+      text-decoration-color: var(--primary-color);
+    }
+  }
+  @media (width <= 720px) {
+    h1 {
+      flex-direction: column;
+      gap: 0;
+    }
+    .typing-text {
+      max-width: 300px;
+    }
+  }
+}
+.gradient-text {
+  background: linear-gradient(
+    to bottom,
+    oklch(100% 0.00011 271.152),
+    var(--primary-color)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: -2px 4px 5px  rgba(65, 62, 62, 0.45);
+}
+
+.cta-container {
+  .btn-hero {
+    font-size: clamp(1.15rem, 2vw, 1.25rem);
+    padding: 
+      clamp(1.35rem, calc(1rem + 2.2vw), 1.75rem) 
+      clamp(2rem, 2vw, 2.75rem);
+    background-color: var(--primary-color);
+    /* letter-spacing: .175rem; */
+    cursor: pointer;
+    color: var(--accent);
+    text-shadow: var(--txt-shadow);
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    /* &:hover {
+      outline: 1px solid transparent;
+      transition: all 300ms ease-in-out;
+      background: linear-gradient(
+        var(--logo-color),
+        var(--primary-color)
+      );
+    } */
+  }
+}

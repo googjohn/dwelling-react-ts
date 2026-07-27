@@ -1,0 +1,6 @@
+{
+  "editor.fontSize": 13,
+  "files.autoSave": "onWindowChange",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}
