@@ -1,10 +1,8 @@
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--color-yellow-300);
-  border-bottom: 1px solid var(--color-yellow-300);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.spacer {
+  height: calc(var(--header-h) + var(--pad-margin-n));
+  /* margin-bottom: var(--pad-margin-n); */
+  /* border-top: 1px solid var(--color-yellow-300); */
+  /* border-bottom: 1px solid var(--color-yellow-300); */
 }
 
 .ticks {
@@ -34,20 +32,19 @@
   background-image: 
     linear-gradient(rgba(0,0,0, 0.35), rgba(0,0,0, 0.35)),
     url(./assets/images/backgrounds/bg-hero-main.webp);
-  background-position: center;
-  background-size: cover;
   background-attachment: scroll;
-  height: 100svh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  background-position: center;
   justify-content: center;
+  background-size: cover;
+  flex-direction: column;
   align-items: center;
+  height: 100svh;
+  display: flex;
+  width: 100%;
   gap: 2rem;
 
   @media (width <= 720px) {
     gap: 10px;
-    /* line-height: 1rem; */
   }
 }
 .salutation {
@@ -56,7 +53,6 @@
     place-content: center;
     gap: 20px;
     font-size: var(--txt-salutation);
-    
   }
   .typing-text {
     font-size: var(--txt-heading-2);
@@ -86,30 +82,65 @@
     color: transparent;
     text-shadow: -2px 4px 5px  rgba(65, 62, 62, 0.45);
 }
-
-.cta-container {
-  .btn-hero {
-    font-size: clamp(1.15rem, 2vw, 1.25rem);
-    padding: 
-      clamp(1.35rem, calc(1rem + 2.2vw), 1.75rem) 
-      clamp(2rem, 2vw, 2.75rem);
-    background-color: var(--primary-color);
-    /* letter-spacing: .175rem; */
-    cursor: pointer;
-    color: var(--accent);
-    text-shadow: var(--txt-shadow);
-
-    &:hover {
-      box-shadow: none;
-    }
-
-    /* &:hover {
-      outline: 1px solid transparent;
-      transition: all 300ms ease-in-out;
-      background: linear-gradient(
+.btn-primary {
+  border: none;
+  padding: var(--btn-pad);
+  color: var(--accent);
+  outline-offset: -1px;
+  outline: 2px solid var(--accent);
+  text-shadow: var(--txt-shadow);
+  background-color: var(--primary-color);
+  transition: all 300ms ease-in-out;
+  
+  &:hover {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    background-image: 
+      linear-gradient(
         var(--logo-color),
         var(--primary-color)
       );
-    } */
+    transition: all 300ms;
   }
+}
+.btn-hero {
+  font-size: clamp(1.15rem, 2vw, 1.25rem);
+  padding: 
+  clamp(1.35rem, calc(1rem + 2.2vw), 1.75rem) 
+  clamp(2rem, 2vw, 2.75rem);
+  
+  &.for-hero {
+    min-width: 210px;
+  }
+  &.non-hero {
+    min-width: min-content;
+  }
+}
+.bg-lg {
+  /* background-color: rgba(0,0,0, .7); */
+  /* background: 
+    linear-gradient(
+       rgba(0,0,0, .4),
+       rgba(0,0,0, .8)
+    ); */
+  background: linear-gradient(var(--bg-lg));
+  /* backdrop-filter: blur(8px); */
+  /* border-top: 1px solid rgba(255,255,255, .3); */
+  box-shadow: var(--white-shadow);
+}
+.navigation li {
+  font-size: var(--txt-navigation);
+}
+.glass {
+  background: rgba(175, 160, 160, 0.15);
+  /* background: rgba(26, 25, 25, 0.15); */
+  backdrop-filter: blur(16px);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  border: 1px solid rgba(192, 191, 191, 0.2);
+}
+.contact-section {
+  background: url(/src/assets/images/backgrounds/bg-contact.jpg) top center/cover fixed;
+}
+.services-section {
+  background: url(/src/assets/images/backgrounds/bg-services.jpg) right center/cover fixed;
 }

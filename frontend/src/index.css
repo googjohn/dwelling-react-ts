@@ -19,6 +19,12 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --bg-lg: rgba(0,0,0, .2),rgba(0,0,0,.8);
+  /* --bg-base: rgba(0,0,0, .7); */
+  --bg-base: rgba(0,0,0, .5);
+  --bg-base-2: rgba(0,0,0, .3);
+  --white-shadow: 0 0 4px 0 rgba(255,255,255, .6);
+  --black-shadow: 0 0 4px 0 rgba(0,0,0, .5);
 
   --sans: 'Raleway',system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -41,13 +47,20 @@
 
   /* sizes */
   --txt-normal: clamp(.875rem,2vw,1rem);
+  --txt-navigation: clamp(1rem,1.5vw,1.125rem);
   --txt-heading-1: clamp(1.25rem,calc(1rem + 1vw),1.85rem);
   --txt-heading-2: clamp(1rem,calc(.5rem + 1.8vw),1.5rem);
   --txt-salutation: clamp(3.8rem, 8vw, 6rem);
+  --txt-title: clamp(1.5rem,calc(1rem + 2vw),2.5rem);;
   --txt-shadow: -2px 4px 5px  rgba(65, 62, 62, 0.45);
-  --btn-hero: clamp(1.5rem, 1rem + 4vw, 2rem)
+  --btn-pad: 
+    clamp(.875rem, calc(1rem + 2.2vw), 1.25rem) 
+    clamp(1.5rem, 2vw, 2rem);
+  --pad-margin-n: clamp(.625rem,2vw,1rem);
+  --header-h: clamp(3rem,10vw,5rem);
 
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0); */
+  --background: oklch(93.1% 0.00011 271.152);
 
   --foreground: oklch(0.145 0 0);
 
@@ -220,11 +233,30 @@
     font-size: var(--txt-normal);
   }
   .txt-heading {
-    font-size: var(--txt-heading-1)
+    font-size: var(--txt-heading-1);
+    font-weight: 600;
+  }
+  .txt-heading-2 {
+    font-size: var(--txt-heading-2);
+  }
+  .txt-title {
+    font-size: var(--txt-title);
+    font-weight: 600;
   }
   .glass {
     backdrop-filter: blur(16px);
     background: rgb(255 255 255 / 0.2);
+  }
+  .dark-glass {
+    backdrop-filter: blur(16px);
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .overlay::after {
+    content: '';
+    inset: 0;
+    position: absolute;
+    background-color: var(--bg-base);
+
   }
 }
 
@@ -247,9 +279,22 @@ body, html {
   padding: 0;
   box-sizing: border-box;
 }
-
 section {
+  position: relative;
   width: 100%;
-  height: 100%;
-  min-height: min(100%, 100svh);
+  max-height: 100%;
+  min-height: max(100%,100svh);
+}
+html {
+  scroll-snap-type: y proximity;
+  /* height: 100svh; */
+  scroll-behavior: smooth;
+}
+.section {
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.section-end {
+  /* scroll-snap-align: end; */
 }
