@@ -1,27 +1,41 @@
-import { useCallback, useEffect, useMemo, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
-export default function useIntersectionObserver(threshold: number) {
-  const isIntersecting = useRef(false);
+export function useIntersectionObserver() {
+  const [isIntersecting, setIsIntersecting] = useState(true);
   const isScrolling = useRef(false);
-  const observer = useRef(null);
+  const observer = useRef<IntersectionObserver>(null);
 
   useEffect(() => {
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           isScrolling.current = true;
-          isIntersecting.current = true;
+          setIsIntersecting(true);
+        } else {
+          setIsIntersecting(false)
         }
       })
     }, {
-      threshold,
+      rootMargin: "-10px 0px",
+      threshold: .1,
     })
+
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    }
   }, [])
 
   const register = useCallback((el: HTMLElement | null) => {
-    if (el && observer.current) {
+    if (!observer.current) return;
+
+    observer.current.disconnect();
+
+    if (el) {
       observer.current.observe(el)
     }
+
   }, [observer])
-  return { register }
+  return { register, isIntersecting }
 }

@@ -6,10 +6,11 @@ type Phase = "typing" | "deleting" | "pausedBeforeDeleting" | "pausedBeforeTypin
 export function useTypingText(
   textsArray: TypedTexts,
   TYPING_DELAY: number = 150,
-  PAUSE_DELAY: number = 2000
+  PAUSE_DELAY: number = 2000,
+  isVisible: boolean = true,
 ): {
   text: string,
-  status: Phase
+  status: Phase,
 } {
   const [text, setText] = useState("");
   const [status, setStatus] = useState<Phase>("pausedBeforeTyping");
@@ -18,6 +19,8 @@ export function useTypingText(
   const currentText = textsArray[arrayIndex % textsArray.length];
 
   useEffect(() => {
+    if (!isVisible) return;
+
     const timeout = setTimeout(() => {
       switch (status) {
         case "typing": {
@@ -51,7 +54,7 @@ export function useTypingText(
     }, (status === 'typing' || status === 'deleting' ? TYPING_DELAY : PAUSE_DELAY))
 
     return () => clearTimeout(timeout)
-  }, [status, text, currentText, TYPING_DELAY, PAUSE_DELAY])
+  }, [status, text, currentText, TYPING_DELAY, PAUSE_DELAY, isVisible])
 
   if (!textsArray.length) return { text: "unavailable", status: 'unavailable' };
 

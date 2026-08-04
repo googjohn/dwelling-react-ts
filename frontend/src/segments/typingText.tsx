@@ -1,3 +1,4 @@
+import { useIntersectionObserver } from "@/hooks/observer";
 import { useTypingText } from "@/hooks/typeText";
 import { cn } from "@/lib/utils";
 
@@ -9,9 +10,11 @@ const SERVICES = [
 ]
 
 export default function ServicesInfo() {
-  const { text, status } = useTypingText(SERVICES, 35, 1500)
+  const { register, isIntersecting } = useIntersectionObserver();
+  const { text, status } = useTypingText(SERVICES, 35, 1500, isIntersecting)
+
   return (
-    <div className="typing-text w-full min-h-16 flex gap-2.5 items-center justify-center place-self-center">
+    <div ref={register} className="border typing-text w-full min-h-16 flex gap-2.5 items-center justify-center place-self-center">
       {status !== 'unavailable' &&
         (
           <>
