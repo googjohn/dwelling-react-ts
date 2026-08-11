@@ -10,11 +10,11 @@ const SERVICES = [
 ]
 
 export default function ServicesInfo() {
-  const { register, isIntersecting } = useIntersectionObserver();
+  const { register, isIntersecting } = useIntersectionObserver("0px", 0.1);
   const { text, status } = useTypingText(SERVICES, 35, 1500, isIntersecting)
 
   return (
-    <div ref={register} className="border typing-text w-full min-h-16 flex gap-2.5 items-center justify-center place-self-center">
+    <div ref={register} className="typing-text w-full min-h-16 flex gap-2.5 items-center justify-center place-self-center">
       {status !== 'unavailable' &&
         (
           <>

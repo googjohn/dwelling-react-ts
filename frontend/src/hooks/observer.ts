@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 
-export function useIntersectionObserver() {
+export function useIntersectionObserver(rootMargin: string, threshold: number) {
   const [isIntersecting, setIsIntersecting] = useState(true);
   const isScrolling = useRef(false);
   const observer = useRef<IntersectionObserver>(null);
@@ -16,8 +16,8 @@ export function useIntersectionObserver() {
         }
       })
     }, {
-      rootMargin: "-10px 0px",
-      threshold: .1,
+      rootMargin,
+      threshold,
     })
 
     return () => {

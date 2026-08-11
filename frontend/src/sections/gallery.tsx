@@ -5,6 +5,7 @@ import { Card, CardContent, CardAction, CardDescription } from "@/components/ui/
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { RippleEffect } from "@/components/ui/ripple";
 import Autoplay from "embla-carousel-autoplay";
+import { useIntersectionObserver } from "@/hooks/observer";
 
 type ItemProp = {
   location: string,
@@ -51,6 +52,7 @@ const SLIDES: ItemProp[] = [
   },
 ]
 export default function Gallery() {
+  const { register, isIntersecting } = useIntersectionObserver("-10px", 0);
   const autoplay = useMemo(() =>
     Autoplay({
       delay: 3000,
@@ -60,13 +62,13 @@ export default function Gallery() {
   )
 
   return (
-    <section className="section gallery-section">
+    <section ref={register} className="section gallery-section">
       <div className="gallery-container h-svh">
         <div className="gallery-content  relative">
           <Carousel
-            plugins={[autoplay]}
+            plugins={isIntersecting ? [autoplay] : []}
             opts={{
-              loop: true,
+              loop: isIntersecting,
             }}
           >
             <CarouselContent className="p-0">

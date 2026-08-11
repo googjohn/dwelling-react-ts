@@ -71,20 +71,23 @@ const CUSTOMER_TYPE = [
 export default function Contact() {
   return (
     <section className="section contact-section">
-      <div className="contact-container z-10 relative  bg-(--bg-base)">
+      <div className="contact-container min-h-svh relative bg-(--bg-base) bg-[linear-gradient(to_top,var(--bg)_0_55%,transparent_55%_100%)]">
         <Spacer />
         <SectionTitle title="Contact Us" />
         <div className="contact-content">
           <div className="sub-heading container mx-auto text-center">
             <h3>Let us know your concern.</h3>
           </div>
-          <div className="section-content p-(--pad-margin-n)">
+          <div className="p-(--pad-margin-n)">
             <ContactForm />
           </div>
-          <AdditionalContactInfo />
+          <div>
+
+            <AdditionalContactInfo />
+          </div>
         </div>
       </div>
-      <div className="absolute bottom-0 z-0 w-full h-7/12 bg-white bg-linear-to-b from-45.5% from-[rgba(0,0,0,.8)] to-[rgba(0,0,0,.825)] to-20%"></div>
+      {/* <div className="absolute bottom-0 z-0 w-full h-auto bg-white bg-linear-to-b from-45.5% from-[rgba(0,0,0,.8)] to-[rgba(0,0,0,.825)] to-20%"></div> */}
     </section>
   )
 }

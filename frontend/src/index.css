@@ -8,9 +8,11 @@
 :root {
   --logo-color: #c8b568;
   --primary-color: #229b50;
+  --feature: #273239;
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  /* --bg: #fff; */
+  --bg: #161616;
   --border: oklch(0.922 0 0);
   --code-bg: #f4f3ec;
   --accent: oklch(0.97 0 0);
@@ -21,10 +23,14 @@
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
   --bg-lg: rgba(0,0,0, .2),rgba(0,0,0,.8);
   /* --bg-base: rgba(0,0,0, .7); */
+  --bg-overlay: rgba(0,0,0, .6);
   --bg-base: rgba(0,0,0, .5);
   --bg-base-2: rgba(0,0,0, .3);
   --white-shadow: 0 0 4px 0 rgba(255,255,255, .6);
+  --white-shadow-2: 0 0 10px 0 rgba(255,255,255, .6);
   --black-shadow: 0 0 4px 0 rgba(0,0,0, .5);
+  --bs-cards: -3px 3px 10px 0 rgba(0,0,0, 0.45),
+    2px -2px 10px 0 rgba(255,255,255, 0.75);
 
   --sans: 'Raleway',system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -49,7 +55,7 @@
   --txt-normal: clamp(.875rem,2vw,1rem);
   --txt-navigation: clamp(1rem,1.5vw,1.125rem);
   --txt-heading-1: clamp(1.25rem,calc(1rem + 1vw),1.85rem);
-  --txt-heading-2: clamp(1rem,calc(.5rem + 1.8vw),1.5rem);
+  --txt-heading-2: clamp(1.125rem,calc(.5rem + 1.8vw),1.5rem);
   --txt-salutation: clamp(3.8rem, 8vw, 6rem);
   --txt-title: clamp(1.5rem,calc(1rem + 2vw),2.5rem);;
   --txt-shadow: -2px 4px 5px  rgba(65, 62, 62, 0.45);
@@ -61,6 +67,7 @@
 
   /* --background: oklch(1 0 0); */
   --background: oklch(93.1% 0.00011 271.152);
+  /* --background: var(--bg); */
 
   --foreground: oklch(0.145 0 0);
 
@@ -255,8 +262,15 @@
     content: '';
     inset: 0;
     position: absolute;
-    background-color: var(--bg-base);
-
+    /* z-index: 1; */
+    background-color: var(--bg-base-2);
+  }
+  .darker-overlay::before {
+    content: '';
+    inset: 0;
+    position: absolute;
+    /* z-index: 1; */
+    background-color: var(--bg-overlay);
   }
 }
 

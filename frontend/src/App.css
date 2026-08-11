@@ -89,7 +89,8 @@
   outline-offset: -1px;
   outline: 2px solid var(--accent);
   text-shadow: var(--txt-shadow);
-  background-color: var(--primary-color);
+  /* backdrop-filter: blur(20px); */
+  /* background-color: var(--primary-color); */
   transition: all 300ms ease-in-out;
   
   &:hover {
@@ -100,7 +101,7 @@
         var(--logo-color),
         var(--primary-color)
       );
-    transition: all 300ms;
+    transition: all 300ms ease-in-out;
   }
 }
 .btn-hero {
@@ -139,8 +140,32 @@
   border: 1px solid rgba(192, 191, 191, 0.2);
 }
 .contact-section {
-  background: url(/src/assets/images/backgrounds/bg-contact.jpg) top center/cover fixed;
+  background: url(/src/assets/images/backgrounds/bg-contact.jpg) center center/cover fixed;
+}
+.contact-section::beforee {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0 0;
+
+  background: rgb(0 0 0 / 0.20);
+  backdrop-filter: blur(160px);
+  -webkit-backdrop-filter: blur(16px);
+
+  pointer-events: none;
 }
 .services-section {
-  background: url(/src/assets/images/backgrounds/bg-services.jpg) right center/cover fixed;
+  background: url(/src/assets/images/backgrounds/bg-services.jpg) center center/cover fixed;
+}
+.asked-section-bg {  
+  background: url(/src/assets/images/backgrounds/bg-featured.jpg) center center/cover fixed;
+}
+.about-section {
+  background: url(/src/assets/images/backgrounds/bg-subscribe-2.jpg) center center/cover no-repeat fixed;
+}
+.subscribe {
+  background: url(/src/assets/images/backgrounds/bg-subscribe.jpg) center center/cover fixed;
+}
+.ovl {
+  background-color: var(--bg-overlay);
+  backdrop-filter: blur(40px);
 }

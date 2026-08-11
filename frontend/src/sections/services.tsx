@@ -1,6 +1,7 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Spacer } from "@/components/ui/spacer";
 import { SectionTitle } from "@/segments/sectionTitle";
+import { SubHeading } from "@/segments/subHeading";
 import { BiSolidBank } from "react-icons/bi";
 import { FaBinoculars, FaGavel, FaHandshake, FaLaptop, FaListCheck } from "react-icons/fa6";
 
@@ -42,20 +43,20 @@ export default function Services() {
     <section className="section services-section">
       <div className="services-container min-h-svh bg-(--bg-base-2)">
         <Spacer />
-        <SectionTitle title="Services" />
+        <SectionTitle title="Our Services" />
         <div className="services-content max-w-7xl mx-auto p-(--pad-margin-n)">
-          <div className="sub-heading max-w-2xl text-center mx-auto mb-(--pad-margin-n) text-accent/70">
-            <h3>Our services include but are not limited to property sales,
-              rentals, leasing, and property management. Whether you're a
-              first-time buyer or a seasoned investor, our team of agents
-              will work tirelessly to ensure that you find the property that
-              meets your needs and fits within your budget.</h3>
-          </div>
+          <SubHeading>
+            Our services include but are not limited to property sales,
+            rentals, leasing, and property management. Whether you're a
+            first-time buyer or a seasoned investor, our team of agents
+            will work tirelessly to ensure that you find the property that
+            meets your needs and fits within your budget.
+          </SubHeading>
 
           <div className="mx-auto gap-2.5 w-full h-full flex flex-wrap">
             {SERVICES.map((service, index) => {
               return (
-                <Card key={index} className='gap-2.5 dark-glass shadow-(--white-shadow) w-full sm:flex-4/12 lg:flex-3/12'>
+                <Card key={index} className='gap-2.5 bg-(--bg) dark-glass ovl shadow-(--bs-cards) w-full sm:flex-4/12 lg:flex-3/12'>
                   <div className='w-full h-auto flex justify-center items-center text-5xl text-(--primary-color)'>
                     {service.icon}
                   </div>

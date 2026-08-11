@@ -1,5 +1,7 @@
-import navLogo from "@/assets/images/logo/dwelling-logo.svg"
+import { NavLink } from "react-router"
 import { FaUserCircle } from "react-icons/fa"
+import navLogo from "@/assets/images/logo/dwelling-logo.svg"
+import { cn } from "@/lib/utils"
 
 const NAVLINKS = [
   {
@@ -31,7 +33,7 @@ export default function Header() {
           <div className="navbar flex-1 place-self-center px-2.5">
             <NavMenu />
           </div>
-          <div className="user-menu flex-1 place-content-center pr-(--pad-margin-n)">
+          <div className="user-menu flex-1 flex justify-end pr-(--pad-margin-n)">
             <UserMenu />
           </div>
         </div>
@@ -47,11 +49,15 @@ export function NavMenu() {
         <li key={navlink.name}
           className="gradient-text text-(--txt-heading-1) cursor-pointer"
         >
-          <a href={navlink.path}
-            className="px-2 py-2.5 hover:text-accent font-semibold"
+          <NavLink to={navlink.path}
+            className={({ isActive }) =>
+              cn("px-2 py-2.5 font-semibold hover:text-accent duration-500",
+                isActive && "text-accent",
+              )
+            }
           >
             {navlink.name}
-          </a>
+          </NavLink>
         </li>
       ))}
     </ul>
